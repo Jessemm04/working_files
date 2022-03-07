@@ -1,0 +1,31 @@
+<div class="bg-secondary">
+{% extends 'layout.html' %}
+
+{% block mainContent %}
+<h2>Details for order number: {{id}}</h2>
+    <p>Order Date: {{odetails['order_date']}}</p>
+    <p>Order Total: ${{ototal['Order Total']}}</p>
+
+    <table class="table">
+        <tr>
+            <th>Product Code</th>
+            <th>Description</th>
+            <th>Order Quantity</th>
+            <th>Order Price</th>
+            <th>Total Price</th>
+        </tr>
+        {% for row in odetails %}
+        <tr>
+            <td>{{row['prod_code']}}</td>
+            <td>{{row['description']}}</td>
+            <td>{{row['order_qty']}}</td>
+            <td>${{row['order_price']}}</td>
+            <td>${{row['Total Price']}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="5" style="text_align: right;">${{ototal['Order Total']}}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

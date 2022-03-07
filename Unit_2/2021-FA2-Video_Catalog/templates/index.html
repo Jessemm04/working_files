@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block mainContent %}
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Welcome Home</h2>
+            <br>
+
+            <div class="container px-3">
+              <div class="row gx-5">
+                <div class="col">
+                    <a href="https://www.youtube.com/watch?v=lJjILQu2xM8" target="_blank" rel="noopener noreferrer">
+                        <div class="p-5 border bg-light">Entrepenurialship, 13/10/2021</div></a>
+                </div>
+                <div class="col">
+                  <a href="https://www.youtube.com/watch?v=aozlwC3XwfY" target="_blank" rel="noopener noreferrer">
+                      <div class="p-5 border bg-light">Business 101, 11/10/2021</div></a>
+                </div>
+                  <div class="col">
+                 <a href="https://www.youtube.com/watch?v=LRP8d7hhpoQ" target="_blank" rel="noopener noreferrer">
+                     <div class="p-5 border bg-light">Hallejulah, 10/10/2021</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <br>
+            <hr style="color:black;background-color: black;">
+            <br>
+
+
+            <div class="container overflow-hidden">
+              <div class="row gy-5">
+                <div class="col-6 p-3">
+                  <a href="topics.html"><div class="p-5 border bg-light">BUS12</div></a>
+                </div>
+                <div class="col-6 p-3">
+                  <a href="topics.html"><div class="p-5 border bg-light">ENG07</div></a>
+                </div>
+                <div class="col-6 p-3">
+                  <a href="topics.html"><div class="p-5 border bg-light">PSY12</div></a>
+                </div>
+                <div class="col-6 p-3">
+                  <a href="topics.html"><div class="p-5 border bg-light">MAM12</div></a>
+                </div>
+              </div>
+            </div>
+
+
+</div>
+{% endblock %}

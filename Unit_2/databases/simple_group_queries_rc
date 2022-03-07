@@ -1,0 +1,24 @@
+--SG1
+select town, count(town)
+from customers
+group by town;
+
+--SG2
+select cust_no, count(*) as 'No_of_orders'
+from orders
+group by cust_no
+order by No_of_orders desc;
+
+--SG3
+select prod_group, sum(list_price*qty_on_hand) as 'Stock_Value'
+from products
+group by prod_group;
+
+--SG4
+select town, count(*) as 'Heavy_Debt'
+from customers
+where curr_bal/cr_limit >= 0.9
+group by town;
+
+--SG5
+select prod_code, sum(

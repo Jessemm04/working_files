@@ -1,0 +1,72 @@
+--SN4
+select description, prod_code
+from products
+where order_price = (
+select max(order_price)
+from products);
+
+--SN5
+select prod_code
+from products
+where (list_price * remake_qty) = (
+select max(list_price * remake_qty)
+from products);
+
+--SN6
+select cust_name, cr_limit
+from customers
+where cr_limit > (
+select cr_limit
+from customers
+where cust_no = '2255');
+
+--SN7
+select cust_name
+from customers
+where cust_no in (
+    select cust_no
+    from orders
+    where order_no in (
+        select order_no
+        from order_details
+        where max(order_price) = (
+            select max(order_price)
+            from order_details
+            where prod_code = (
+                select prod_code
+                from products
+                where prod_code = 'STANK'))));
+
+--SN8
+select order_date
+from orders
+where order_no in (
+    select order_no
+    from order_details
+    where (order_price*order_qty) = (
+        select max(order_price*order_qty)
+        from order_details));
+        
+--SN9
+select cust_name
+from customers
+where cust_no in (
+    select cust_no
+    from orders
+    where order_no in (
+        select min(order_no)
+        from order_details
+        where prod_code in (
+            select prod_code
+            from products
+            where prod_code = 'GNOME')));
+            
+--SN10
+select cust_name, cust_no,
+    (select max(order_date) 
+    from orders where cust_no = c1.cust_no) as 'last order'
+from customers c1
+where cust_no in (
+select cust_no
+from orders
+where order_date not like '18%');

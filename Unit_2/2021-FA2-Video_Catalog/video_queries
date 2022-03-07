@@ -1,0 +1,37 @@
+--display videos in student's classes
+select video_id, title, video_link
+from video_details
+where video_id in (
+    select video_id
+    from videos
+    where topic_id in (
+        select topic_id
+        from topics
+        where subject_code in (
+            select subject_code
+            from users u, enrolements e, classes c
+            where u.username = e.student_id
+            and e.class_id = c.class_id
+            and username = '22765';
+            
+--display videos in teacher's classes
+select video_id, title, video_link
+from video_details
+where video_id in (
+    select video_id
+    from videos
+    where topic_id in (
+        select topic_id
+        from topics
+        where subject_code in (
+            select subject_code
+            from users u, staff_classes s, classes c
+            where u.staff_code = s.staff_code
+            and s.subject_code = c.subject_code
+            and staff_code = 'ANS';
+
+--3 recent videos
+select date_submitted, video_id
+from video_details
+order by date_submitted desc
+limit 3;
